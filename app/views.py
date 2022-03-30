@@ -7,7 +7,7 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def RegionList(request):
     # pegando todas as regiões do br
-    regions = Region.object.all()
+    regions = Region.objects.all()
 
     serializer = RegionSerializer(regions, many=True)
 
