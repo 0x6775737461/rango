@@ -1,12 +1,12 @@
-from app.views import RegionGetOrPost, RegionDeleteOrPut, FruitsList
+from app.views import (RegionGetOrPost, RegionDeleteOrPut,
+        FruitsGetOrPost)
 
 from django.urls import path
 
 urlpatterns = [
-        path('', RegionGetOrPost.as_view()),
+        path('region/', RegionGetOrPost.as_view()),
         # operando em um único objeto
         path('<int:pk>/', RegionDeleteOrPut().as_view()),
 
-        path('', FruitsList),
-
+        path('fruits/', FruitsGetOrPost.as_view()),
 ]

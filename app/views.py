@@ -60,11 +60,25 @@ class RegionDeleteOrPut(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['GET'])
-def FruitsList(request):
-    # pegando todos os (as) objetos (frutas) do db
-    fruits = Fruits.objects.all()
+class FruitsGetOrPost(APIView):
 
-    serializer = FruitsSerializer(fruits, many=True)
+    def get(self, request):
+        # pegando todos os (as) objetos (frutas) do db
+        fruits = Fruits.objects.all()
 
-    return Response(serializer.data)
+        serializer = FruitsSerializer(fruits, many=True)
+
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = FruitsSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+#class FrutsDeleteOrPut(APIView):
+#    def get_object(self, request
