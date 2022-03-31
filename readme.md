@@ -40,10 +40,14 @@ Baixando os pacotes:
 
 ### Como usar
 
+Antes de seguir esse _hands-on_, apague (ou não) o banco de dados que o repositório contém.
 Para iniciar a aplicação utilize o CLI do Django (esteja com o shell desenvolvimento ativado):
 
 ```bash
-(env) $ python manage.py runserver
+(env) $ python manage.py makemigrations # utilize os dois só se tiver apagado o db
+(env) $ python manage.py migrate
+
+(env) $ python manage.py runserver # independente do db ter sido excluído, execute a aplicação
 ```
 
 Temos duas tabelas (_Region_ e _Fruits_) no nosso banco de dados, ambas possuem os
