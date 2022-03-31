@@ -100,7 +100,7 @@ Para apagar os dados que atribuímos podemos usar o método DELETE.
 Apagando as informações do "Nordeste" e a fruta "Cajá":
 
 ```bash
-$ curl -X DELETE http://127.0.0.1:8000/region/7/
+$ curl -X DELETE http://127.0.0.1:8000/region/1/
 ```
 
 Não iremos precisar apagar os dados da tabela _Fruits_, ela é configurada com uma "chave estrangeira",
