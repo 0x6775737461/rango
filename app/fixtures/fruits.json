@@ -1,0 +1,42 @@
+[
+  {
+    "model": "app.Fruits",
+    "pk": 1,
+    "fields": {
+      "name": "Pêra",
+      "origin": 1
+    }
+  },
+  {
+    "model": "app.Fruits",
+    "pk": 2,
+    "fields": {
+      "name": "Uva",
+      "origin": 2
+    }
+  },
+  {
+    "model": "app.Fruits",
+    "pk": 3,
+    "fields": {
+      "name": "Maçã",
+      "origin": 3
+    }
+  },
+  {
+    "model": "app.Fruits",
+    "pk": 4,
+    "fields": {
+      "name": "Caju",
+      "origin": 4
+    }
+  },
+  {
+    "model": "app.Fruits",
+    "pk": 5,
+    "fields": {
+      "name": "Banana",
+      "origin": 5
+    }
+  }
+]
