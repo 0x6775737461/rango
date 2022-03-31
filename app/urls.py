@@ -1,8 +1,12 @@
-from app.views import RegionList, FruitsList
+from app.views import RegionGetOrPost, RegionDeleteOrPut, FruitsList
 
 from django.urls import path
 
 urlpatterns = [
-        path('', RegionList),
-        path('', FruitsList)
+        path('', RegionGetOrPost.as_view()),
+        # operando em um único objeto
+        path('<int:pk>/', RegionDeleteOrPut().as_view()),
+
+        path('', FruitsList),
+
 ]
