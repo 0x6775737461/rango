@@ -79,6 +79,33 @@ class FruitsGetOrPost(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class FruitsDeleteOrPut(APIView):
+    def get_object(self, pk):
+        try:
+            return Fruits.objects.get(pk=pk)
 
-#class FrutsDeleteOrPut(APIView):
-#    def get_object(self, request
+        except Fruits.DoesNotExists:
+            raise NotFound()
+
+    def get(self, request, pk):
+        fruit = self.get_object(pk)
+
+        serializer = RegionSerializer(fruit)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        fruit = self.get_object(pk)
+
+        serializer = RegionSerializer(fruit, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            #status == 200 no método post por padrão
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        fruit = self.get_object(pk)
+
+        fruit.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
