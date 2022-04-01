@@ -26,7 +26,7 @@ As ferramentas usadas neste "leia-me":
 Crie seu ambiente de desenvolvimento isolado:
 
 ```bash
-$ python -m venv env
+$ python3 -m venv env
 $ source env/bin/activate
 ```
 
@@ -38,13 +38,29 @@ Baixando os pacotes:
 
 ---
 
+#### Atenção
+
+Esta aplicação foi feita com o intuíto de solucionar um desafio técnico. Para que os requerimentos
+em relação ao banco de dados seja atendido, há "fixtures" para inserir os dados no DB. Porém no
+repositório haverá o arquivo(`db.sqlite3`) já preenchido para fins de análise.
+
+O preenchimento foi feito com os seguintes comandos:
+
+```bash
+$ python3 manage.py loaddata regions.json
+$ python3 manage.py loaddata fruits.json
+```
+
+Os passos á seguir serão válidos caso queira explorar como os variados métodos funcionam. Então o arquivo
+de exemplo no repositório deve ser apagado.
+
 ### Como usar
 
 Antes de seguir esse _hands-on_, apague (ou não) o banco de dados que o repositório contém.
 Para iniciar a aplicação utilize o CLI do Django (esteja com o shell desenvolvimento ativado):
 
 ```bash
-(env) $ test -e db.sqlite3 || python manage.py migrate
+(env) $ test -e db.sqlite3 || python manage.py migrate && echo "Apague o arquivo antes de seguir!"
 (env) $ python manage.py runserver
 ```
 
