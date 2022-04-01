@@ -33,7 +33,7 @@ $ source env/bin/activate
 Baixando os pacotes:
 
 ```bash
-(env) $ pip install requirements.txt
+(env) $ pip install -r requirements.txt
 ```
 
 ---
@@ -44,10 +44,8 @@ Antes de seguir esse _hands-on_, apague (ou não) o banco de dados que o reposit
 Para iniciar a aplicação utilize o CLI do Django (esteja com o shell desenvolvimento ativado):
 
 ```bash
-(env) $ python manage.py makemigrations # utilize os dois só se tiver apagado o db
-(env) $ python manage.py migrate
-
-(env) $ python manage.py runserver # independente do db ter sido excluído, execute a aplicação
+(env) $ test -e db.sqlite3 || python manage.py migrate
+(env) $ python manage.py runserver
 ```
 
 Temos duas tabelas (_Region_ e _Fruits_) no nosso banco de dados, ambas possuem os
@@ -65,7 +63,7 @@ A nossa tabela _Region_ agora possui a região Centro-Oeste na coluna "names", v
 na tabela _Fruits_ utilizando também o método POST:
 
 ```bash
-$ curl -X POST -H 'content-type: apliccation/json' -d '{"name":"Cajá","id":1}' http://127.0.0.1:8000/fruits/
+$ curl -X POST -H 'content-type: application/json' -d '{"name":"Cajá","origin":1}' http://127.0.0.1:8000/fruits/ | jq
 ```
 
 #### GET
@@ -75,7 +73,7 @@ No comando anterior inserimos a região "Centro-Oeste", com o ID retornado pela 
 passando esse ID como parâmetro:
 
 ```bash
-$ curl -Ss -X GET -H http://127.0.0.1:8000/region/1 | jq
+$ curl -Ss -X GET http://127.0.0.1:8000/region/1/ | jq
 ```
 
 Formato da resposta:
@@ -95,7 +93,7 @@ Centro-Oeste, porém ela tem maior abundância no Nordeste, então vamos modific
 do método PUT:
 
 ```bash
-$ curl -X PUT -H 'content-encoding: application/json' -d '{"name":"Nordeste"}' http://127.0.0.1:8000/region/1
+$ curl -X PUT -H 'content-type: application/json' -d '{"name":"Nordeste"}' http://127.0.0.1:8000/region/1/ | jq
 ```
 
 #### DELETE
