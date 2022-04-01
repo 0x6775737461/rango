@@ -15,9 +15,9 @@ As ferramentas usadas neste "leia-me":
 
 - bash (Bourne Again Shell).
 
-- curl.
+- [curl](https://github.com/curl/curl).
 
-- jq.
+- [jq](https://github.com/stedolan/jq).
 
 - ... (algumas já são implícitas, como o python, django framework, etc.)
 
